@@ -45,14 +45,43 @@ class _MyHomePageState extends State<MyHomePage> {
                 fit: BoxFit.fitHeight,
               ),
             ),
-            Column(
-              // this need 120 bottom space
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Center(
-                  child: CustomButton(),
-                ),
-              ],
+            /*Container(
+              margin: EdgeInsets.only(top: MediaQuery.of(context).size.height/3),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Container(
+                      width: MediaQuery.of(context).size.width,
+                      child: Text(
+                        "The progress is only within you.",
+                        style: TextStyle(fontSize: 16, color: Colors.white),
+                      )),
+                  Container(
+                      width: MediaQuery.of(context).size.width,
+                      child: Text(
+                        "The ore within\nis revealed.",
+                        style: TextStyle(fontSize: 32, color: Colors.white),
+                      )),
+                ],
+              ),
+            ),*/
+            Container(
+              margin: EdgeInsets.only(bottom: 120, left: 50, right: 50),
+              child: Column(
+                // 120 vertical bottom
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Center(
+                    child: CustomButton(buttonText: "Login", onPressed: () {
+                      print("Merhaba buton tıklandı");
+                    }),
+                  ),
+                  Center(
+                    child: CustomButton(buttonText: "Sign Up", onPressed: (){},),
+                  ),
+                ],
+              ),
             )
           ],
         ),
@@ -60,5 +89,3 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-
-
