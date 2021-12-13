@@ -1,4 +1,5 @@
 import 'package:eight_app/customButton.dart';
+import 'package:eight_app/loginPage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -34,7 +35,16 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      body: LoginPage()
+    );
+  }
+}
+
+
+
+/*  esas body
+
+Center(
         child: Stack(
           children: [
             Container(
@@ -74,7 +84,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: [
                   Center(
                     child: CustomButton(buttonText: "Login", onPressed: () {
-                      print("Merhaba buton tıklandı");
+                      print("Butona tıklandı...");
+                     Navigator.push(context, MaterialPageRoute(builder: (context)=> LoginPage()));
                     }),
                   ),
                   Center(
@@ -86,6 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-    );
-  }
-}
+
+
+
+ */
