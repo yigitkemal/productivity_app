@@ -1,7 +1,9 @@
+import 'package:eight_app/Auth.dart';
 import 'package:eight_app/CustomIcons.dart';
 import 'package:eight_app/customButton.dart';
 import 'package:eight_app/customIconButton.dart';
 import 'package:eight_app/customTextField.dart';
+import 'package:eight_app/home.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 
@@ -95,7 +97,23 @@ class _LoginPageState extends State<LoginPage> {
                                   ],
                                 )),
                             child: ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                // Here is the sign in
+                                AuthenticationHelper()
+                                    .singIn(email: "ykayka@yka.com", password: "12121313")
+                                    .then((value){
+                                   if(value==null){
+                                     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> Home()));
+                                   }else{
+                                     Scaffold.of(context).showSnackBar(SnackBar(
+                                       content: Text(
+                                         value,
+                                         style: TextStyle(fontSize: 16),
+                                       ),
+                                     ));
+                                   }
+                                });
+                              },
                               child: Text(
                                 buttonText,
                                 style: TextStyle(
