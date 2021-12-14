@@ -1,5 +1,9 @@
+import 'package:eight_app/CustomIcons.dart';
+import 'package:eight_app/customButton.dart';
+import 'package:eight_app/customIconButton.dart';
 import 'package:eight_app/customTextField.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttericon/font_awesome5_icons.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -11,6 +15,8 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   var mailString;
 
+  String buttonText = "Sign In";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,6 +27,7 @@ class _LoginPageState extends State<LoginPage> {
               image: AssetImage('assets/images/login_bg.jpg'),
               fit: BoxFit.fitHeight,
             ),
+            //App Logo
             Container(
               width: MediaQuery.of(context).size.width,
               height: 75,
@@ -44,12 +51,100 @@ class _LoginPageState extends State<LoginPage> {
                     borderRadius: BorderRadius.circular(10)),
                 margin: EdgeInsets.symmetric(horizontal: 35),
                 child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CustomTextField(hintText: "Username or Email...",),
-                      CustomTextField(hintText: "Password...",),
-                    ],
+                  child: Container(
+                    margin: EdgeInsets.symmetric(horizontal: 20),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        //Sign In Text
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          margin: EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 15),
+                          child: Text(
+                            "Sign In",
+                            style: TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white),
+                          ),
+                        ),
+                        // TextField Email
+                        CustomTextField(
+                          hintText: "Username or Email...",
+                        ),
+                        // TextField Password
+                        CustomTextField(
+                          hintText: "Password...",
+                        ),
+                        SizedBox(
+                          height: 30,
+                        ),
+                        // Sign In Button
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          height: 55,
+                          margin: EdgeInsets.symmetric(horizontal: 10),
+                          child: DecoratedBox(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                gradient: LinearGradient(
+                                  colors: [
+                                    Color(0xFF0E0717),
+                                    Color(0xFF020930)
+                                  ],
+                                )),
+                            child: ElevatedButton(
+                              onPressed: () {},
+                              child: Text(
+                                buttonText,
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 16),
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                  primary: Colors.transparent,
+                                  shadowColor: Colors.transparent,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10))),
+                            ),
+                          ),
+                        ),
+                        // Forgot yout password button
+                        Container(
+                          height: 40,
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            child: Text(
+                              "Forgot Password?",
+                              style: TextStyle(
+                                  fontSize: 10, fontWeight: FontWeight.w200),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.transparent,
+                              shadowColor: Colors.transparent,
+                            ),
+                          ),
+                        ),
+                        // Sign In with social
+                        Container(
+                          margin: EdgeInsets.only(top: 15),
+                          child: Text(
+                            "Or Countinue With;",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14),
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                           CustomIconButton(comingIcon: CustomIcon.google, onPressed: (){}),
+                           CustomIconButton(comingIcon: CustomIcon.apple_1, onPressed: (){}),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
