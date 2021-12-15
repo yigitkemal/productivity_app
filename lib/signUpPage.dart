@@ -7,19 +7,19 @@ import 'package:eight_app/home.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({Key? key}) : super(key: key);
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _SignUpPageState createState() => _SignUpPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignUpPageState extends State<SignUpPage> {
   var mailString;
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  String buttonText = "Sign In";
+  String buttonText = "Sign Up";
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             Center(
               child: Container(
-                height: MediaQuery.of(context).size.height / 2,
+                height: (MediaQuery.of(context).size.height / 5)*3,
                 decoration: BoxDecoration(
                     gradient: LinearGradient(
                       begin: Alignment.topLeft,
@@ -64,7 +64,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     border: Border.all(color: Colors.white),
                     borderRadius: BorderRadius.circular(10)),
-                margin: EdgeInsets.symmetric(horizontal: 35),
+                margin: EdgeInsets.only(left: 35,right: 35,top: 130),
                 child: Center(
                   child: Container(
                     margin: EdgeInsets.symmetric(horizontal: 20),
@@ -77,7 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                           margin: EdgeInsets.symmetric(
                               horizontal: 10, vertical: 15),
                           child: Text(
-                            "Sign In",
+                            "Sign Up",
                             style: TextStyle(
                                 fontSize: 22,
                                 fontWeight: FontWeight.bold,
@@ -96,10 +96,14 @@ class _LoginPageState extends State<LoginPage> {
                           textFieldType: true,
                           textFieldController: passwordController,
                         ),
+                        CustomTextField(
+                          hintText: "Password Again...",
+                          textFieldType: true,
+                        ),
                         SizedBox(
                           height: 30,
                         ),
-                        // Sign In Button
+                        // Sign Up Button
                         Container(
                           width: MediaQuery.of(context).size.width,
                           height: 55,
@@ -117,18 +121,18 @@ class _LoginPageState extends State<LoginPage> {
                               onPressed: () {
                                 // Here is the sign in
                                 AuthenticationHelper()
-                                    .singIn(email: emailController.text.trim(), password: passwordController.text.trim())
+                                    .signUp(email: emailController.text.trim(), password: passwordController.text.trim())
                                     .then((value){
-                                   if(value==null){
-                                     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> Home()));
-                                   }else{
-                                     Scaffold.of(context).showSnackBar(SnackBar(
-                                       content: Text(
-                                         value,
-                                         style: TextStyle(fontSize: 16),
-                                       ),
-                                     ));
-                                   }
+                                  if(value==null){
+                                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> Home()));
+                                  }else{
+                                    Scaffold.of(context).showSnackBar(SnackBar(
+                                      content: Text(
+                                        value,
+                                        style: TextStyle(fontSize: 16),
+                                      ),
+                                    ));
+                                  }
                                 });
                               },
                               child: Text(
@@ -174,8 +178,8 @@ class _LoginPageState extends State<LoginPage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                           CustomIconButton(comingIcon: CustomIcon.google, onPressed: (){}),
-                           CustomIconButton(comingIcon: CustomIcon.apple_1, onPressed: (){}),
+                            CustomIconButton(comingIcon: CustomIcon.google, onPressed: (){}),
+                            CustomIconButton(comingIcon: CustomIcon.apple_1, onPressed: (){}),
                           ],
                         )
                       ],

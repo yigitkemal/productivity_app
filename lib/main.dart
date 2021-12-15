@@ -1,5 +1,6 @@
 import 'package:eight_app/customButton.dart';
 import 'package:eight_app/loginPage.dart';
+import 'package:eight_app/signUpPage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -35,7 +36,63 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: LoginPage()
+      body: Center(
+        child: Stack(
+          children: [
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+              child: Image(
+                image: AssetImage('assets/images/firstPage.jpg'),
+                fit: BoxFit.fitHeight,
+              ),
+            ),
+            /*Container(
+              margin: EdgeInsets.only(top: MediaQuery.of(context).size.height/3),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Container(
+                      width: MediaQuery.of(context).size.width,
+                      child: Text(
+                        "The progress is only within you.",
+                        style: TextStyle(fontSize: 16, color: Colors.white),
+                      )),
+                  Container(
+                      width: MediaQuery.of(context).size.width,
+                      child: Text(
+                        "The ore within\nis revealed.",
+                        style: TextStyle(fontSize: 32, color: Colors.white),
+                      )),
+                ],
+              ),
+            ),*/
+            Container(
+              margin: EdgeInsets.only(bottom: 120, left: 50, right: 50),
+              child: Column(
+                // 120 vertical bottom
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Center(
+                    child: CustomButton(buttonText: "Login", onPressed: () {
+                      print("Butona tıklandı...");
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=> LoginPage()));
+                    }),
+                  ),
+                  Center(
+                    child: CustomButton(buttonText: "Sign Up", onPressed: (){
+                      print("Sign Up butonuna tıklandı...");
+                      Navigator.push(context,MaterialPageRoute(builder: (context)=>SignUpPage()));
+                    },),
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
+      ),
+
     );
   }
 }
@@ -85,11 +142,14 @@ Center(
                   Center(
                     child: CustomButton(buttonText: "Login", onPressed: () {
                       print("Butona tıklandı...");
-                     Navigator.push(context, MaterialPageRoute(builder: (context)=> LoginPage()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=> LoginPage()));
                     }),
                   ),
                   Center(
-                    child: CustomButton(buttonText: "Sign Up", onPressed: (){},),
+                    child: CustomButton(buttonText: "Sign Up", onPressed: (){
+                      print("Sign Up butonuna tıklandı...");
+                      Navigator.push(context,MaterialPageRoute(builder: (context)=>SignUpPage()));
+                    },),
                   ),
                 ],
               ),
@@ -97,7 +157,6 @@ Center(
           ],
         ),
       ),
-
 
 
  */
