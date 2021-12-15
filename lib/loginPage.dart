@@ -16,6 +16,8 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   var mailString;
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   String buttonText = "Sign In";
 
@@ -74,10 +76,14 @@ class _LoginPageState extends State<LoginPage> {
                         // TextField Email
                         CustomTextField(
                           hintText: "Username or Email...",
+                          textFieldType: false,
+                          textFieldController: emailController,
                         ),
                         // TextField Password
                         CustomTextField(
                           hintText: "Password...",
+                          textFieldType: true,
+                          textFieldController: passwordController,
                         ),
                         SizedBox(
                           height: 30,
@@ -100,7 +106,7 @@ class _LoginPageState extends State<LoginPage> {
                               onPressed: () {
                                 // Here is the sign in
                                 AuthenticationHelper()
-                                    .singIn(email: "ykayka@yka.com", password: "12121313")
+                                    .singIn(email: emailController.text.trim(), password: passwordController.text.trim())
                                     .then((value){
                                    if(value==null){
                                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> Home()));

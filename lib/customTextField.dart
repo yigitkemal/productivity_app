@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
     Key? key,
-    required this.hintText,
+    required this.hintText, required this.textFieldType,required this.textFieldController
   }) : super(key: key);
 
   final String hintText;
+  final bool textFieldType;
+  final TextEditingController textFieldController;
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +18,8 @@ class CustomTextField extends StatelessWidget {
           borderRadius: BorderRadius.circular(10)),
       margin: EdgeInsets.symmetric(vertical: 5),
       child: TextField(
+        controller: textFieldController,
+        obscureText: textFieldType,
         style: TextStyle(color: Colors.white),
         decoration: InputDecoration(
             contentPadding: EdgeInsets.only(left: 15),
