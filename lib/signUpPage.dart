@@ -27,10 +27,9 @@ class _SignUpPageState extends State<SignUpPage> {
       body: Container(
         child: Stack(
           children: [
-
             Image(
               image: AssetImage('assets/images/login_bg.jpg'),
-              fit: BoxFit.fitHeight,
+              fit: BoxFit.fill,
             ),
             Container(
               margin: EdgeInsets.only(left: 20,top: 50),
@@ -124,7 +123,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                     .signUp(email: emailController.text.trim(), password: passwordController.text.trim())
                                     .then((value){
                                   if(value==null){
-                                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> Home()));
+                                    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=> Home()),
+                                        (Route<dynamic> route)=> false);
                                   }else{
                                     Scaffold.of(context).showSnackBar(SnackBar(
                                       content: Text(

@@ -27,7 +27,6 @@ class _LoginPageState extends State<LoginPage> {
       body: Container(
         child: Stack(
           children: [
-
             Image(
               image: AssetImage('assets/images/login_bg.jpg'),
               fit: BoxFit.fitHeight,
@@ -120,7 +119,8 @@ class _LoginPageState extends State<LoginPage> {
                                     .singIn(email: emailController.text.trim(), password: passwordController.text.trim())
                                     .then((value){
                                    if(value==null){
-                                     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> Home()));
+                                     Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=> Home()),
+                                             (Route<dynamic> route)=> false);
                                    }else{
                                      Scaffold.of(context).showSnackBar(SnackBar(
                                        content: Text(

@@ -1,4 +1,5 @@
 import 'package:eight_app/customButton.dart';
+import 'package:eight_app/home.dart';
 import 'package:eight_app/loginPage.dart';
 import 'package:eight_app/signUpPage.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -35,7 +36,15 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Home();
+  }
+}
+
+
+
+/*
+
+Scaffold(
       body: Center(
         child: Stack(
           children: [
@@ -94,8 +103,12 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
 
     );
-  }
-}
+
+
+
+ */
+
+
 
 
 
